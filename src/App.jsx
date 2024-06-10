@@ -1,12 +1,10 @@
-import './App.css'
-
-function App() {
-
+import Navbar from './component/Navbar'
+const App = () => {
   return (
-    <>
-      <h1>React</h1>
-    </>
+    <div>
+      <Navbar/>
+    </div>
   )
 }
 
-export default App
+export default App;
