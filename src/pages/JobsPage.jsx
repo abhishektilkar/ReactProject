@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 // import JobListing from "../component/JobListing";
 // import { data } from "autoprefixer";
 // import { useState } from "react";
@@ -9,9 +9,23 @@ import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 // import { FaMapLocation } from "react-icons/fa6";
 // import JobListings from "../component/JobListings";
 
-const JobsPage = () => {
-  // const { id } = useParams;
+const JobsPage = ({ hiredJob }) => {
+  const { id: jobId } = useParams();
   const job = useLoaderData();
+  const navigate = useNavigate();
+
+  const hiredJobSubmit = () => {
+    const confirm = window.confirm(
+      'Are you sure you want to delete this listing?'
+    );
+
+    if (!confirm) return;
+    // const jobId = 0;
+    hiredJob(jobId);
+    navigate('/jobs');
+    return;
+  }
+  
 
   return (<>  <section>
       <div className="container m-auto py-6 px-6">
@@ -84,13 +98,14 @@ const JobsPage = () => {
             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 className="text-xl font-bold mb-6">Manage Job</h3>
               <Link
-                to="/add-job"
+                to={`/edit-job/${job.id}`}
                 className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >
                 Edit Job
               </Link>
               <button
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                onClick={hiredJobSubmit}
               >
                 Delete Job
               </button>
@@ -102,6 +117,7 @@ const JobsPage = () => {
 };
 
 const jobsLoader = async ({ params }) => {
+  console.log('params', params.id)
   const res = await fetch(`http://localhost:8001/jobs/${params.id}`);
   const data = await res.json();
   return data;
