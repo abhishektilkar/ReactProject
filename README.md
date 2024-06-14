@@ -1,3 +1,3 @@
 # Job Website
 
-Try it out /api/
+Try it out https://react-project-five-coral.vercel.app/
