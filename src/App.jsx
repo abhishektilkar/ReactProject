@@ -14,7 +14,7 @@ import EditJobPage from './pages/EditJobPage';
 const App = () => {
   const addJob = async (newJob) => {
     // console.log(newJob);
-    const res = await fetch('https://react-project-five-coral.vercel.app/jobs', {
+    const res = await fetch('/api/jobs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ const App = () => {
 
   const hiredJob = async (jobId) => {
     console.log(jobId);
-    const res = await fetch(`https://react-project-five-coral.vercel.app/jobs/${jobId}`, {
+    const res = await fetch(`/api/jobs/${jobId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const App = () => {
 
   const updateJob = async (job) => {
     console.log('Job', job);
-    const res = await fetch(`https://react-project-five-coral.vercel.app/jobs/${job.id}`, {
+    const res = await fetch(`/api/jobs/${job.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
