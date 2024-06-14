@@ -118,7 +118,7 @@ const JobsPage = ({ hiredJob }) => {
 
 const jobsLoader = async ({ params }) => {
   console.log('params', params.id)
-  const res = await fetch(`http://localhost:8001/jobs/${params.id}`);
+  const res = await fetch(`https://react-project-five-coral.vercel.app/jobs/${params.id}`);
   const data = await res.json();
   return data;
 }

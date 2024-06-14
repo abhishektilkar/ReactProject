@@ -16,8 +16,8 @@ const JobListings = ({ isHome = false }) => {
     useEffect(() => {
       const fetchJobs = async () => {
         const apiUrl = isHome
-        ? 'http://localhost:8001/jobs?_limit=3'
-        : 'http://localhost:8001/jobs';
+        ? 'https://react-project-five-coral.vercel.app/jobs?_limit=3'
+        : 'https://react-project-five-coral.vercel.app/jobs';
         try {
           const res = await fetch(apiUrl);
           const data = await res.json();
