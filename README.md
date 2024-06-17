@@ -1,3 +1,3 @@
 # Job Website
 
-Try it out https://react-project-five-coral.vercel.app/
+Try it out [here](https://react-project-five-coral.vercel.app/)
